@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Crypto gain and loss leaderboard</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    
+<div class="container">
+    <header class="header">
+        <img src="" class="logo"> 
+        <div class="input-box"> 
+            <select name="" class="select" id="select-crypto"></select>
+            <input type="text" placeholder="quantity" value="" class="quantity">
+            <input type="text" placeholder="Price" value="" class="price">
+            <button class="button button--primary check" >Check</button>
+        </div>
+    </header>
+
+    <main class="row">
+        <div class="card">
+            <div class="card__body">
+                <ul class="list" id="list">
+                    <li class="list__item text--title" id="list__item--title">
+                        <div class="list__grid">
+                            <div class="text--left text--small text--dark">Crypto</div>
+                            <div class="text--right text--small text--dark"> Investment, gain & loss</div>
+                        </div>
+                    </li>
+                </ul>
+                <button class="button button--primary check" onclick="window.location.reload()">Check for update</button>
+                <button class="button button--primary check" onclick="localStorage.clear()">Clear all</button>
+            </div>
+        </div>
+    </main>
+</div>
+<script src="script.js"></script>
+</body>
+</html>
