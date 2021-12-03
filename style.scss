@@ -162,8 +162,9 @@ button,select {
 
 .logo {
 	display: inline-block;
-	width: 100%;
-	max-width: $spacing-unit*16;
+	width: $spacing-unit*2;
+	max-width: $spacing-unit*2;
+	margin-right: $spacing-unit*12;
 	user-select: none;
 }
 

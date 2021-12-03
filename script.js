@@ -79,9 +79,7 @@ const resolveData = (cryptocurrencies, history = {}) => {
 	}
 }
 
-const makeView = (data) => {
-	
-	return `
+const makeView = (data) => `
 		<li class="list__item">
 			<div class="list__grid">
 				<div class="media">
@@ -93,23 +91,20 @@ const makeView = (data) => {
 				</div>
 				<div class="text--right">
 					<div class="mt--8">
-						<span class="text--dark">invested :</span>  <strong class="text--primary">$${data.estimatetotalCost}</strong>
+						<span class="text--dark">invested :</span>  <strong class="text--primary">$${data.estimate.totalCost}</strong>
 					</div>
-					<div class="mt--8 ${isGain(data.estimatereturns) ? 'text--success' : 'text--orange'}">
-					${isGain(data.estimatereturns) ? 'gain' : 'loss'} :  <strong>$${Math.abs(data.estimatereturns)}</strong>
+					<div class="mt--8 ${isGain(data.estimate.returns) ? 'text--success' : 'text--orange'}">
+					${isGain(data.estimate.returns) ? 'gain' : 'loss'} :  <strong>$${Math.abs(data.estimate.returns)}</strong>
 					</div>
 					<div class="mt--8 text--dark">
-					  Total: <strong>$${Math.abs(data.estimatetotal)}</strong>
+					  Total: <strong>$${Math.abs(data.estimate.total)}</strong>
 					</div>
 				</div>
 			</div>
 		</li>
 		`;
-		
-}
-function insertAfter(newNode, existingNode) {
-    existingNode.parentNode.insertBefore(newNode, existingNode.nextSibling);
-}
+
+const insertAfter = (newNode, existingNode) => existingNode.parentNode.insertBefore(newNode, existingNode.nextSibling);
 
 const store = (history) => {
 	histories.push(history);
@@ -129,27 +124,3 @@ const init = async () => {
 }
 
 init();
-
-function generateUUID()
-{
-	var d = new Date().getTime();
-	
-	if( window.performance && typeof window.performance.now === "function" )
-	{
-		d += performance.now();
-	}
-	
-	var uuid = 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'.replace(/[xy]/g, function(c)
-	{
-		var r = (d + Math.random()*16)%16 | 0;
-		d = Math.floor(d/16);
-		return (c=='x' ? r : (r&0x3|0x8)).toString(16);
-	});
-
-return uuid;
-}
-
-
-
-console.log("uuid",generateUUID());
-

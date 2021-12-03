@@ -112,8 +112,9 @@ button, select {
 
 .logo {
   display: inline-block;
-  width: 100%;
-  max-width: 14.4rem;
+  width: 1.8rem;
+  max-width: 1.8rem;
+  margin-right: 10.8rem;
   user-select: none; }
 
 .list {
