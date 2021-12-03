@@ -2,7 +2,7 @@
 const histories = localStorage.getItem('histories') ? JSON.parse(localStorage.getItem('histories')) : [];
 localStorage.setItem('histories', JSON.stringify(histories))
 
-const getCrypto = async (currency) => {
+const getCrypto = async () => {
 	const API_URL = `https://api.nomics.com/v1/currencies/ticker?key=539714791b99c02fc38f6a214d90ffb66f70bc00&interval=1d&per-page=200&page=1'}`;
 	const response = await fetch(API_URL);
 	if (!response.ok) {
