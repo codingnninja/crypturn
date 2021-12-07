@@ -3,7 +3,8 @@ const histories = localStorage.getItem('histories') ? JSON.parse(localStorage.ge
 localStorage.setItem('histories', JSON.stringify(histories))
 
 const getCryptos = async () => {
-	const API_URL = `https://api.nomics.com/v1/currencies/ticker?key=539714791b99c02fc38f6a214d90ffb66f70bc00&interval=1d&per-page=200&page=1'}`;
+	const API_URL = `https://api.coingecko.com/api/v3/coins`;
+	console.log(API_URL)
 	const response = await fetch(API_URL);
 	if (!response.ok) {
 		throw new Error (`An error occurred: ${response.status}`);
@@ -56,7 +57,7 @@ const resolveData = (cryptocurrencies, history = {}) => {
 	const index = history.index ?? selectedCryptoEl.value;
 	const cryptocurrency = cryptocurrencies[index]
     
-	const price = cryptocurrency.price;
+	const price = cryptocurrency.market_data.current_price.usd;
 
 	const costInput = document.querySelector('.price');
 	const cost = history.cost ?? costInput.value;
@@ -83,9 +84,9 @@ const makeView = (data) => `
 		<li class="list__item">
 			<div class="list__grid">
 				<div class="media">
-					<img class="avatar media__img" src="${data.cryptocurrency.logo_url}" />
+					<img class="avatar media__img" src="${data.cryptocurrency.image.thumb}" />
 					<div class="media__content">
-						<div class="media__title">${data.cryptocurrency.currency}</div>
+						<div class="media__title">${data.cryptocurrency.symbol}</div>
 						<h5>${data.cryptocurrency.name}</h5>
 					</div>
 				</div>
